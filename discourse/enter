@@ -8,6 +8,12 @@ source ./etc/credentials-template
 echo $DISCOURSE_HOST
 ARGV=$@
 
+$POSTGRES_USER=""
+$POSTGRES_PASS=""
+$POSTGRES_HOST=""
+$POSTGRES_PORT=""
+
+
 function setup {
     set -x
     # Note that we do not reset the database, to support a manual
@@ -66,15 +72,15 @@ function configure_from_env {
 #    fi
 
 # set up smtp
-    sed -i "s/# config.action_mailer.delivery_method/config.action_mailer.delivery_method/" config/environments/production.rb
-    sed -i "s/# config.action_mailer.smtp_settings/config.action_mailer.smtp_settings/" config/environments/production.rb
-    sed -i "s/# :address => \"smtp.sendgrid.net\"/:address => \"$SMTP_HOST\"/" config/environments/production.rb
-    sed -i "s/# :port => 587/:port => $SMTP_PORT/" config/environments/production.rb
-    sed -i "s/# :domain => 'YOUR DOMAIN'/:domain => '$SMTP_DOMAIN'/" config/environments/production.rb
-    sed -i "s/# :user_name => 'YOUR_USER'/:user_name => '$SMTP_USER'/" config/environments/production.rb
-    sed -i "s/# :password => 'YOUR_PASSWORD'/:password => '$SMTP_PASS'/" config/environments/production.rb
-    sed -i "s/# :authentication => 'plain'/:authentication => '$SMTP_AUTH'/" config/environments/production.rb
-    sed -i "s/# :enable_starttls_auto => true/:enable_starttls_auto => $SMTP_TLSAUTO/" config/environments/production.rb
+   # sed -i "s/# config.action_mailer.delivery_method/config.action_mailer.delivery_method/" config/environments/production.rb
+   # sed -i "s/# config.action_mailer.smtp_settings/config.action_mailer.smtp_settings/" config/environments/production.rb
+   # sed -i "s/# :address => \"smtp.sendgrid.net\"/:address => \"$SMTP_HOST\"/" config/environments/production.rb
+   # sed -i "s/# :port => 587/:port => $SMTP_PORT/" config/environments/production.rb
+   # sed -i "s/# :domain => 'YOUR DOMAIN'/:domain => '$SMTP_DOMAIN'/" config/environments/production.rb
+   # sed -i "s/# :user_name => 'YOUR_USER'/:user_name => '$SMTP_USER'/" config/environments/production.rb
+   # sed -i "s/# :password => 'YOUR_PASSWORD'/:password => '$SMTP_PASS'/" config/environments/production.rb
+   # sed -i "s/# :authentication => 'plain'/:authentication => '$SMTP_AUTH'/" config/environments/production.rb
+   # sed -i "s/# :enable_starttls_auto => true/:enable_starttls_auto => $SMTP_TLSAUTO/" config/environments/production.rb
        
 }
 
