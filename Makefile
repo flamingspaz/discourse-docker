@@ -24,6 +24,9 @@ push:
 ps:
 	sudo docker ps 
 
+postfix:
+	sudo docker build postfix
+
 supervisor:
 	sudo `which supervisord` -n -c etc/supervisord.conf
 
