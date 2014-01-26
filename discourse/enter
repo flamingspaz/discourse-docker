@@ -4,7 +4,7 @@
 
 set -e
 #source ./bin/postgresql-info
-source ./etc/credentials-template
+source ./etc/credentials
 echo $DISCOURSE_HOST
 ARGV=$@
 
@@ -90,6 +90,7 @@ if [ "$1" = "setup" ]; then
     setup
 elif [ "$1" == "web" ]; then
     echo "+ bundle exec rails server"
+    run_cmd "service postfix start"
     run_cmd "bundle exec rails server"
 elif [ "$1" == "sidekiq" ]; then
     echo "+ bundle exec sidekiq"

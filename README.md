@@ -12,32 +12,30 @@ Usage
 -----
 
 Get yourself a Ubuntu 13.04 VM (I recommend
-[DigitalOcean](https://www.digitalocean.com/?refcode=efb0b61918fa)),
+[DigitalOcean](https://www.digitalocean.com/)),
 and start getting Discourse up and running in a few minutes:
 
 ```bash
 # Install docker
 open http://docs.docker.io/en/latest/installation/ubuntulinux/#ubuntu-raring
 
-# Install postgresql-client for management-tasks
-apt-get install postgresql-client
-
 # Install supervisor, the process manager
 sudo apt-get install python-pip
 sudo pip install supervisor
 
-git clone https://github.com/srid/discourse-docker.git
+git clone https://github.com/srid/discourse-docker.git # change to our repo
 cd discourse-docker
 
+# Add the Mandrill detials into 
+
 # Pull the docker images (expect this to download a few megabytes)
-make pull  # or `make build` if you want to locally build them
+make build
 
 # Configure your discourse site domain (DISCOURSE_HOST)
 more etc/env
 echo 'export DISCOURSE_HOST=mysite.com:5000' > .env
-# OPTIONAL: email support via postmarkapp.com.
-# later, add the 'From' address to Discourse admin settings.
-echo 'export POSTMARK_API_KEY=<apikey>' >> .env
+
+# Copy etc/credentials-template to etc/credentials and add the relevant stuff
 
 # Start supervisor on a separate terminal window. This will
 # automatically start the redis and postgresql containers.
